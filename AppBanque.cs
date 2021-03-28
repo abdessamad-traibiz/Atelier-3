@@ -85,7 +85,7 @@ namespace Atelier2
             compteepargne1.CalculInteret();
             compteepargne1.AfficherOperation();
             compteepargne1.Consulter();
-            CompteEpargne compteepargne2 = new CompteEpargne(client2, 50);
+            CompteEpargne compteepargne2 = new CompteEpargne(client2, 20);
             Operation op1 = new Operation("Dépot", new MAD(300), false);
             Operation op2 = new Operation("Retrait", new MAD(100), true);
             compteepargne2.Debiter(new MAD(200));
