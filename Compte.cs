@@ -9,7 +9,7 @@ namespace Atelier2
     class Compte
     {
         private readonly int NumCpt;
-        private static int Cpt = 0;
+        private static int Cpt = 180186;
         protected readonly Client Titulaire;
         protected MAD Solde;
         private static MAD plafond = new MAD(2000);
