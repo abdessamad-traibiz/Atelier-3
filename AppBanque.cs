@@ -89,7 +89,7 @@ namespace Atelier2
             Operation op1 = new Operation("Dépot", new MAD(300), false);
             Operation op2 = new Operation("Retrait", new MAD(100), true);
             compteepargne2.Debiter(new MAD(200));
-            op1.Afficher();
+            Console.Write("Operation "); op1.Afficher();
             op2.Afficher();
             compteepargne2.AfficherOperation();
             compteepargne2.Consulter();
