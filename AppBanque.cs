@@ -87,9 +87,11 @@ namespace Atelier2
             compteepargne1.Consulter();
             CompteEpargne compteepargne2 = new CompteEpargne(client2, 50);
             Operation op1 = new Operation("Dépot", new MAD(300), true);
+            compteepargne2.Debiter(new MAD(200));
             op1.Afficher();
             compteepargne2.AfficherOperation();
             compteepargne2.Consulter();
+            
             Console.ReadKey();
         }
     }
