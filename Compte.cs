@@ -18,9 +18,10 @@ namespace Atelier2
 
         /*un constructeur static ,pas niveau de visblite(prive,pub) , pas d'argument , sans this
         il sert a initialiser les attributs statics
+        Exemple:
         static Compte()
         {
-            //Cpt = 0;
+            //Cpt = 180186;
             //plafond = new MAD(2000);
         }*/
         public Compte(Client cl)
