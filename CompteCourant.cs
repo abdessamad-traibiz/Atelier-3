@@ -9,14 +9,19 @@ namespace Atelier2
     class CompteCourant : Compte
     {
         private MAD Decouvert;
-        public CompteCourant(Client cl, MAD decouvert) : base(cl)
+        public CompteCourant(Client cl,MAD s, MAD decouvert) : base(cl,s)
         {
             this.Decouvert = decouvert;
         }
 
         public override bool Debiter(MAD Somme)
         {
-            string operation = "Debit";
+            if (this.ComparerDecouvert(Somme,Decouvert))
+            {
+                return base.Debiter(Somme);
+            }return false;
+
+            /*string operation = "Debit";
             if (Somme > new MAD(0))
             {
                 if (Solde>=(Somme + Decouvert))
@@ -33,6 +38,7 @@ namespace Atelier2
             }
             Console.WriteLine("Impossible somme negatif !!");
             return false;
+            */
         }
     }
 }

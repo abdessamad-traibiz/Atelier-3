@@ -32,6 +32,10 @@ namespace Atelier2
             Console.WriteLine("Adresse : " + this.Adresse);
             Console.WriteLine("-----------------------------------");*/
         }
+        public void AffecterCompte(Compte c)
+        {
+            ListeComptes.Add(c);
+        }
         public void AfficherListeComptes()
         {
             Console.WriteLine($"Liste des comptes du client : {this.Nom} {this.Prenom}");

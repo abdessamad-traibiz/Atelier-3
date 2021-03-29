@@ -26,7 +26,7 @@ namespace Atelier2
         public void Afficher()
         {
             string type = minus ? "-" : "";
-            Console.Write($"Operation : {date_op.ToShortDateString()} | N°  {num_op} ||{type}");
+            Console.Write($"Operation :  {libelle} | {date_op.ToShortDateString()} | N°  {num_op} ||{type}");
             montant.Afficher();
         }
     }

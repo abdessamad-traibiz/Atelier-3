@@ -9,18 +9,27 @@ namespace Atelier2
     class CompteEpargne : Compte
     {
         private double TauxInteret;
-        public CompteEpargne(Client cl, double tauxinteret) : base(cl)
+        public CompteEpargne(Client cl, MAD s) : base(cl, s)
         {
-            if (tauxinteret >= 0 && tauxinteret <= 100)
+            double taux;
+            bool Res;
+            do
             {
-                this.TauxInteret = tauxinteret;
-            }
-            else
-                Console.WriteLine("Taux d'interêt non valide");
+                Console.Write("Donnez un taux valide : ");
+                //TryParse : fonction qui prends en paramètres (la chaine a convertir,ou on va stocker)
+                Res = double.TryParse(Console.ReadLine(), out taux);
+            } while (taux <= 0 || taux >= 100 || !Res);
+            this.TauxInteret = taux;
         }
         public void CalculInteret()
         {
-            this.Solde = Solde + Solde * (TauxInteret / 100);
+             this.AjouterInteret(TauxInteret / 100);
+        }
+        public override void Consulter()
+        {
+            Console.Write("Compte Epargne : ");
+            base.Consulter();
+            Console.WriteLine("Taux Interêt :" + this.TauxInteret);
         }
     }
 }

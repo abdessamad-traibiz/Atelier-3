@@ -80,12 +80,12 @@ namespace Atelier2
             Console.WriteLine("*****Consultation du compte 2 *****");
             compte2.Consulter();
             //---------------Partie 2 test---------------------
-            CompteEpargne compteepargne1 = new CompteEpargne(client1, 30);
+            CompteEpargne compteepargne1 = new CompteEpargne(client1, MAD1);
             compteepargne1.Crediter(new MAD(100));
             compteepargne1.CalculInteret();
             compteepargne1.AfficherOperation();
             compteepargne1.Consulter();
-            CompteEpargne compteepargne2 = new CompteEpargne(client2, 20);
+            CompteEpargne compteepargne2 = new CompteEpargne(client2, MAD2);
             Operation op1 = new Operation("Dépot", new MAD(300), false);
             Operation op2 = new Operation("Retrait", new MAD(100), true);
             compteepargne2.Debiter(new MAD(200));
@@ -94,6 +94,8 @@ namespace Atelier2
             compteepargne2.AfficherOperation();
             compteepargne2.Consulter();
             client1.AfficherListeComptes();
+
+
             
             Console.ReadKey();
         }

@@ -89,7 +89,12 @@ namespace Atelier2
             }
             return false;
         }
-        public void Consulter()
+        public void AjouterInteret(double interet)
+        {
+            MAD Res = this.Solde * interet;
+            this.Crediter(Res);
+        }
+        public virtual void Consulter()
         {
             Console.WriteLine("************************************************");
             Console.WriteLine("Numéro du Compte: " + this.NumCpt);
@@ -97,6 +102,7 @@ namespace Atelier2
             Console.WriteLine("Propriétaire du compte : "); this.Titulaire.Afficher();
             Console.WriteLine("*********************************************");
         }
+        public bool ComparerDecouvert(MAD somme,MAD decouvert)=>(this.Solde-somme)>decouvert;
         public void AfficherOperation()
         {
             if (ListeOperations.Count > 0)
