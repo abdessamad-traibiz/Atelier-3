@@ -9,36 +9,19 @@ namespace Atelier2
     class CompteCourant : Compte
     {
         private MAD Decouvert;
-        public CompteCourant(Client cl,MAD s, MAD decouvert) : base(cl,s)
+        public CompteCourant(Client client,MAD solde, MAD decouvert) :base(client,solde)
         {
             this.Decouvert = decouvert;
         }
 
-        public override bool Debiter(MAD Somme)
+        public override bool Debiter(MAD Somme)//la redéfinition de la méthode débiter
         {
             if (this.ComparerDecouvert(Somme,Decouvert))
             {
                 return base.Debiter(Somme);
             }return false;
 
-            /*string operation = "Debit";
-            if (Somme > new MAD(0))
-            {
-                if (Solde>=(Somme + Decouvert))
-                {
-                    this.Solde -= Somme;
-                    ListeOperations.Add(new Operation(operation, Somme, true));
-                    return true;
-                }
-                else
-                {
-                    Console.WriteLine("Impossible  ");
-                    return false;
-                }
-            }
-            Console.WriteLine("Impossible somme negatif !!");
-            return false;
-            */
+            
         }
     }
 }

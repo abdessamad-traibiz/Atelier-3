@@ -8,26 +8,23 @@ namespace Atelier2
 {
     class Operation
     {
-        public static int cpt = 12345;
-        public int num_op;
-        public DateTime date_op;
-        public string libelle;
-        public MAD montant;
-        public bool minus;
-        public Operation(string libelle, MAD montant, bool minus)
+        public static int Cpt = 0;
+        public int NumOp;
+        public DateTime DateOp;
+        public string Libelle;
+        public MAD Montant;
+        public Operation(string libelle, MAD montant)
         {
-            this.num_op = ++cpt;
-            this.date_op = DateTime.Now;
-            this.libelle = libelle;
-            this.montant = montant;
-            this.minus = minus;
+            this.NumOp = ++Cpt;
+            this.DateOp = DateTime.Now;
+            this.Libelle = libelle;
+            this.Montant = montant;
         }
 
         public void Afficher()
         {
-            string type = minus ? "-" : "";
-            Console.Write($"Operation :  {libelle} | {date_op.ToShortDateString()} | N°  {num_op} ||{type}");
-            montant.Afficher();
+            Console.Write($"Operation :  {DateOp.ToShortDateString()} | N°:  {NumOp} | {Libelle} | || ");
+            Montant.Afficher();
         }
     }
 }

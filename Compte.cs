@@ -9,9 +9,9 @@ namespace Atelier2
     class Compte
     {
         private readonly int NumCpt;
-        private static int Cpt = 180186;
-        protected readonly Client Titulaire;
-        protected MAD Solde;
+        private static int Cpt = 0;
+        private readonly Client Titulaire;
+        private  MAD Solde;
         private static MAD plafond = new MAD(2000);
         public List<Operation> ListeOperations;
 
@@ -21,63 +21,56 @@ namespace Atelier2
         Exemple:
         static Compte()
         {
-            //Cpt = 180186;
+            //Cpt = 0;
             //plafond = new MAD(2000);
         }*/
-        public Compte(Client cl)
-        {
-            this.Titulaire = cl;
-            this.Solde = new MAD(0.00);
-            this.ListeOperations = new List<Operation>();
-            this.NumCpt = ++Cpt;
-            cl.ListeComptes.Add(this);
-        }
         public Compte(Client cl, MAD md)//Cons avec param
         {
-            this.Titulaire = cl;
-            this.Solde = md;
-            this.ListeOperations = new List<Operation>();
             this.NumCpt = ++Cpt;
-            cl.ListeComptes.Add(this);
+            this.Titulaire = cl;
+            this.Solde = md;    
+            this.ListeOperations = new List<Operation>();
+            //cl.ListeComptes.Add(this);
+            Titulaire.AffecterCompte(this);
         }
 
         public virtual bool Crediter(MAD Somme)
         {
             MAD ValNull = new MAD(0);
-            string operation = "Credit";
+            string Aug = "+";
             if (Somme > ValNull)
             {
                 this.Solde += Somme;
-                ListeOperations.Add(new Operation(operation, Somme, false));
+                ListeOperations.Add(new Operation(Aug, Somme));
                 return true;
             }
-            Console.WriteLine("impossible somme negatif !!!");
+            Console.WriteLine("impossible de Créditer somme négatif !!!");
             return false;
         }
         public virtual bool Debiter(MAD Somme)
         {
             MAD ValNull = new MAD(0);
-            string operation = "Debit";
+            string minus = "-";
             if (Somme > ValNull)
             {
                 if (Solde>=Somme && plafond>=Somme)
                 {
                     this.Solde -= Somme;
-                    ListeOperations.Add(new Operation(operation, Somme, true));
+                    ListeOperations.Add(new Operation(minus, Somme));
                     return true;
                 }
                 else if (Somme > plafond)
                 {
-                    Console.WriteLine("Valeur superieur au plafond");
+                    Console.WriteLine("Valeur superieur au plafond !!");
                     return false;
                 }
                 else
                 {
-                    Console.WriteLine("Impossible solde insuffisant");
+                    Console.WriteLine("Impossible solde insuffisant !!");
                     return false;
                 }
             }
-            Console.WriteLine("impossible somme negatif !!");
+            Console.WriteLine("Impossible somme negatif !!");
             return false;
         }
         public bool Verser(Compte Cmpt, MAD Somme)
@@ -100,6 +93,10 @@ namespace Atelier2
             Console.WriteLine("Numéro du Compte: " + this.NumCpt);
             Console.Write("Solde du compte: "); this.Solde.Afficher();
             Console.WriteLine("Propriétaire du compte : "); this.Titulaire.Afficher();
+            foreach(Operation Op in ListeOperations)
+            {
+                Op.Afficher();
+            }
             Console.WriteLine("*********************************************");
         }
         public bool ComparerDecouvert(MAD somme,MAD decouvert)=>(this.Solde-somme)>decouvert;

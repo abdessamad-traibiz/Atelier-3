@@ -9,25 +9,25 @@ namespace Atelier2
     class CompteEpargne : Compte
     {
         private double TauxInteret;
-        public CompteEpargne(Client cl, MAD s) : base(cl, s)
+        public CompteEpargne(Client client, MAD solde) : base(client,solde)
         {
-            double taux;
+            double tauxinteret;
             bool Res;
             do
             {
-                Console.Write("Donnez un taux valide : ");
-                //TryParse : fonction qui prends en paramètres (la chaine a convertir,ou on va stocker)
-                Res = double.TryParse(Console.ReadLine(), out taux);
-            } while (taux <= 0 || taux >= 100 || !Res);
-            this.TauxInteret = taux;
+                Console.Write("Donnez un taux valide : \t");
+                //TryParse : fonction pour traitement des erreurs de type booléen qui prends en paramètres (la chaine a convertir,ou on va la stocker)
+                Res = double.TryParse(Console.ReadLine(), out tauxinteret);
+            } while (tauxinteret <= 0 || tauxinteret >= 100 || !Res);
+            this.TauxInteret = tauxinteret;
         }
         public void CalculInteret()
         {
-             this.AjouterInteret(TauxInteret / 100);
+            this.AjouterInteret(TauxInteret / 100);
         }
         public override void Consulter()
         {
-            Console.Write("Compte Epargne : ");
+            Console.WriteLine("Compte Epargne : ");
             base.Consulter();
             Console.WriteLine("Taux Interêt :" + this.TauxInteret);
         }
