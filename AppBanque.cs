@@ -9,18 +9,13 @@ namespace Atelier2
 {
     class AppBanque
     {
-        Client client1;
-        Client client2;
-        Compte compte1;
-        Compte compte2;
-        Client cl1;
-        Client cl2;
-        MAD MAD1;
-        MAD MAD2;
+        Client client1, client2, cl1, cl2;
+        Compte compte1, compte2;
+        MAD MAD1, MAD2;
         CompteEpargne compteepargne1;
-        Operation op1;
-        Operation op2;
+        Operation op1, op2;
         int CaseSwitch;
+        double valeur1, valeur2;
         public void AppTest (){
             do
             {
@@ -47,11 +42,12 @@ namespace Atelier2
                 do
                 {
 
-                    Console.Write("Entrer Votre Choix : \t"); CaseSwitch = int.Parse(Console.ReadLine());
+                    Console.Write("Entrer Votre Choix : \t"); 
+                    CaseSwitch = int.Parse(Console.ReadLine());
                     if (CaseSwitch > 15 || CaseSwitch < 0)
                     {
                         Console.WriteLine("\n");
-                        Console.WriteLine("                    Votre choix doit etre compris entre 1 et 15 .\n ");
+                        Console.WriteLine("                  Votre choix doit etre compris entre 0 et 15 .\n ");
                     }
 
                 } while (CaseSwitch > 15 || CaseSwitch < 0);
@@ -65,7 +61,8 @@ namespace Atelier2
                         break;
                     case 1:
                         {
-                            Console.WriteLine("\t\t**Ajouter Client** \n\n");
+                            Console.WriteLine("\t\t**Ajouter Client** ");
+                            Console.WriteLine("\t\t--------------------");
                             Console.WriteLine("---Donner les infos du client 1--- ");
                             Console.Write("    Nom :  "); string Nom1 = Console.ReadLine();
                             Console.Write("    Prénom :  "); string Prenom1 = Console.ReadLine();
@@ -80,9 +77,10 @@ namespace Atelier2
                         break;
                     case 2:
                         {
-                            Console.WriteLine("\t\t**Ajouter Compte** \n\n");
-                            Console.Write("Donnez une valeur du MAD pour le client 1 : "); double valeur1 = double.Parse(Console.ReadLine());
-                            Console.Write("Donnez une valeur du MAD pour le client 2 : "); double valeur2 = double.Parse(Console.ReadLine());
+                            Console.WriteLine("\t\t**Ajouter Compte** ");
+                            Console.WriteLine("\t\t--------------------");
+                            Console.Write("Donnez une valeur du MAD pour le client 1 : ");  valeur1 = double.Parse(Console.ReadLine());
+                            Console.Write("Donnez une valeur du MAD pour le client 2 : ");  valeur2 = double.Parse(Console.ReadLine());
                             MAD1 = new MAD(valeur1);
                             MAD2 = new MAD(valeur2);
                             cl1 = new Client("Abdessamad", "Traibiz", "Casa");
@@ -92,44 +90,99 @@ namespace Atelier2
                         }break;
                     case 3:
                         {
-                            Console.WriteLine("\t\t**AfficherClient** \n\n");
-                            client1.Afficher();
-                            client2.Afficher();
+                            Console.WriteLine("\t\t**AfficherClient** ");
+                            Console.WriteLine("\t\t--------------------");
+                            Console.WriteLine("Client 1 : "); client1.Afficher();
+                            Console.WriteLine("Client 2 : "); client1.Afficher();
                         }break;
                     case 4:
                         {
-                            Console.WriteLine("\t\t**Afficher Compte** \n\n");
+                            Console.WriteLine("\t\t**Afficher Compte** ");
+                            Console.WriteLine("\t\t--------------------");
                             compte1.Consulter();
                             compte2.Consulter();
                         }break;
                     case 5:
                         {
-                            Console.WriteLine("\t\t**Créditer Compte** \n\n");
-                            Console.Write("Donnez une valeur à créditer : "); double val1 = double.Parse(Console.ReadLine());
-                            MAD cred = new MAD(val1);
-                            if (compte2.Crediter(cred))
+                            Console.WriteLine("\t\t**Créditer Compte** ");
+                            Console.WriteLine("\t\t--------------------");
+                            do
                             {
-                                Console.WriteLine("Compte 2 Créditer avec succé!!");
+                                Console.Write("Quel Compte vous voulez Créditer 1 ou 2: \t");
+                                CaseSwitch = int.Parse(Console.ReadLine());
+                                if (CaseSwitch > 2 || CaseSwitch < 1)
+                                {
+                                    Console.WriteLine("\n");
+                                    Console.WriteLine("                  Il existe deux compte 1 et 2 .\n ");
+                                }
 
+                            } while (CaseSwitch > 2 || CaseSwitch < 1);
+                            if (CaseSwitch == 1)
+                            {
+                                Console.Write("Donnez une valeur à créditer : "); double val1 = double.Parse(Console.ReadLine());
+                                MAD cred = new MAD(val1);
+                                if (compte1.Crediter(cred))
+                                {
+                                    Console.WriteLine("Compte 1 Créditer avec succé!!");
+
+                                }
+                                else
+                                    Console.WriteLine("Compte 1 n'est pas créditer!!");
                             }
                             else
-                                Console.WriteLine("Compte 1 n'est pas créditer!!");
+                            {
+                                Console.Write("Donnez une valeur à créditer : "); double val1 = double.Parse(Console.ReadLine());
+                                MAD cred = new MAD(val1);
+                                if (compte2.Crediter(cred))
+                                {
+                                    Console.WriteLine("Compte 2 Créditer avec succé!!");
+
+                                }
+                                else
+                                    Console.WriteLine("Compte 2 n'est pas créditer!!");
+                            }
                         }break;
                     case 6: 
                         {
-                            Console.WriteLine("\t\t**Débiter Compte** \n\n");
-                            Console.Write("Donnez une valeur à débiter : "); double val = double.Parse(Console.ReadLine());
-                            MAD deb = new MAD(val);//plafond=2000 
-                            if (compte1.Debiter(deb))
+                            Console.WriteLine("\t\t**Débiter Compte** ");
+                            Console.WriteLine("\t\t--------------------");
+                            do
                             {
-                                Console.WriteLine("Compte 1 débiter avec succé!!");
+                                Console.Write("Quel Compte vous voulez Débiter 1 ou 2: \t");
+                                CaseSwitch = int.Parse(Console.ReadLine());
+                                if (CaseSwitch > 2 || CaseSwitch < 1)
+                                {
+                                    Console.WriteLine("\n");
+                                    Console.WriteLine("                  Il existe deux compte 1 et 2 .\n ");
+                                }
+
+                            } while (CaseSwitch > 2 || CaseSwitch < 1);
+                            if (CaseSwitch == 1)
+                            {
+                                Console.Write("Donnez une valeur à débiter : "); double val = double.Parse(Console.ReadLine());
+                                MAD deb = new MAD(val);//plafond=2000 
+                                if (compte1.Debiter(deb))
+                                {
+                                    Console.WriteLine("Compte 1 débiter avec succé!!");
+                                }
+                                else
+                                    Console.WriteLine("Compte 1 n'est pas débiter!!");
+                            }else
+                            {
+                                Console.Write("Donnez une valeur à débiter : "); double val = double.Parse(Console.ReadLine());
+                                MAD deb = new MAD(val);//plafond=2000 
+                                if (compte2.Debiter(deb))
+                                {
+                                    Console.WriteLine("Compte 2 débiter avec succé!!");
+                                }
+                                else
+                                    Console.WriteLine("Compte 2 n'est pas débiter!!");
                             }
-                            else
-                                Console.WriteLine("Compte 1 n'est pas débiter!!");
                         }break;
                     case 7:
                         {
-                            Console.WriteLine("\t\t**Versement** \n\n");
+                            Console.WriteLine("\t\t**Versement** ");
+                            Console.WriteLine("\t\t--------------------");
                             Console.Write("Donnez une somme à verser : "); double S = double.Parse(Console.ReadLine());
                             MAD somme = new MAD(S);
                             if (compte1.Verser(compte2, somme))
@@ -141,45 +194,59 @@ namespace Atelier2
                         }break;
                     case 8:
                         {
-                            Console.WriteLine("\t\t**Ajouter Compte Epargne** \n\n");
+                            Console.WriteLine("\t\t**Ajouter Compte Epargne** ");
+                            Console.WriteLine("\t\t--------------------");
                             compteepargne1 = new CompteEpargne(client1, MAD1);
+                            Console.WriteLine("Compte Epargne Ajouté !");
                         }break;
                     case 9:
                         {
-                            Console.WriteLine("\t\t**Créditer Compte Epargne** \n\n");
+                            Console.WriteLine("\t\t**Créditer Compte Epargne** ");
                             compteepargne1.Crediter(new MAD(100));
-                        }break;
+                            Console.WriteLine("Compte Epargne 1 Crédité !");
+                        }
+                        break;
                     case 10:
                         {
-                            Console.WriteLine("\t\t**Débiter Compte Epargne** \n\n");
+                            Console.WriteLine("\t\t**Débiter Compte Epargne** ");
                             compteepargne1.Debiter(new MAD(100));
+                            Console.WriteLine("Compte Epargne 1 Débité !");
 
-                        }break;
+                        }
+                        break;
                     case 11:
                         {
-                            Console.WriteLine("\t\t**Calcul Interêt** \n\n");
+                            Console.WriteLine("\t\t**Calcul Interêt** ");
+                            Console.WriteLine("\t\t--------------------");
                             compteepargne1.CalculInteret();
-                        }break;
+                            Console.WriteLine("Le Taux d'interêt a bien été calculé !");
+                        }
+                        break;
                     case 12:
                         {
-                            Console.WriteLine("\t\t**Consulter Compte Epargne** \n\n");
+                            Console.WriteLine("\t\t**Consulter Compte Epargne** ");
+                            Console.WriteLine("\t\t--------------------");
                             compteepargne1.Consulter();
                         }break;
                     case 13:
                         {
-                            Console.WriteLine("\t\t**Ajouter Opération** \n\n");
-                            op1 = new Operation("+", new MAD(300));
-                            op2 = new Operation("-", new MAD(100));
-                        }break;
+                            Console.WriteLine("\t\t**Ajouter Opération** ");
+                            Console.WriteLine("\t\t--------------------");
+                            op1 = new Operation("+", new MAD(300)); Console.WriteLine("Opération Ajouté!");
+                            op2 = new Operation("-", new MAD(100)); Console.WriteLine("Opération Ajouté!");
+                        }
+                        break;
                     case 14:
                         {
-                            Console.WriteLine("\t\t**Afficher Opération** \n\n");
+                            Console.WriteLine("\t\t**Afficher Opération** ");
+                            Console.WriteLine("\t\t--------------------");
                             Console.Write("Operation 1 : "); op1.Afficher();
                             Console.Write("Operation 2 : "); op2.Afficher();
                         }break;
                     case 15:
                         {
-                            Console.WriteLine("\t\t**Afficher Liste Comptes** \n\n");
+                            Console.WriteLine("\t\t**Afficher Liste Comptes** ");
+                            Console.WriteLine("\t\t--------------------");
                             client1.AfficherListeComptes();
                             client2.AfficherListeComptes();
                         }break;

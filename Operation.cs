@@ -23,7 +23,7 @@ namespace Atelier2
 
         public void Afficher()
         {
-            Console.Write($"Operation :  {DateOp.ToShortDateString()} | N°:  {NumOp} | {Libelle} | || ");
+            Console.Write($"Operation :  {DateOp.ToShortDateString()} | N° {NumOp} |{Libelle}  ");
             Montant.Afficher();
         }
     }

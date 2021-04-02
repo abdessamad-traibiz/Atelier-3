@@ -90,14 +90,15 @@ namespace Atelier2
         public virtual void Consulter()
         {
             Console.WriteLine("************************************************");
-            Console.WriteLine("Numéro du Compte: " + this.NumCpt);
-            Console.Write("Solde du compte: "); this.Solde.Afficher();
-            Console.WriteLine("Propriétaire du compte : "); this.Titulaire.Afficher();
-            foreach(Operation Op in ListeOperations)
+            Console.WriteLine("le num est : " + this.NumCpt);
+            Console.Write("le titulaire est : " + this.Titulaire);
+            Console.Write("le solde est : ");
+            this.Solde.Afficher();
+            foreach (Operation o in ListeOperations)
             {
-                Op.Afficher();
+                o.Afficher();
             }
-            Console.WriteLine("*********************************************");
+            Console.WriteLine("***********************************************");
         }
         public bool ComparerDecouvert(MAD somme,MAD decouvert)=>(this.Solde-somme)>decouvert;
         public void AfficherOperation()
