@@ -12,3 +12,7 @@ C:\Users\net\OneDrive\Documents\MES_ETUDES\3IIR_S6_EMSI\P.O.O\Mes_Projets\Atelie
 C:\Users\net\OneDrive\Documents\MES_ETUDES\3IIR_S6_EMSI\P.O.O\Mes_Projets\Atelier2\bin\Debug\Atelier2.exe.config
 C:\Users\net\OneDrive\Documents\MES_ETUDES\3IIR_S6_EMSI\P.O.O\Mes_Projets\Atelier2\bin\Debug\Atelier2.exe
 C:\Users\net\OneDrive\Documents\MES_ETUDES\3IIR_S6_EMSI\P.O.O\Mes_Projets\Atelier2\bin\Debug\Atelier2.pdb
+C:\Users\net\OneDrive\Documents\MES_ETUDES\3IIR_S6_EMSI\P.O.O\Mes_Projets\Atelier3\obj\Debug\Atelier2.csprojAssemblyReference.cache
+C:\Users\net\OneDrive\Documents\MES_ETUDES\3IIR_S6_EMSI\P.O.O\Mes_Projets\Atelier3\obj\Debug\Atelier2.csproj.CoreCompileInputs.cache
+C:\Users\net\OneDrive\Documents\MES_ETUDES\3IIR_S6_EMSI\P.O.O\Mes_Projets\Atelier3\obj\Debug\Atelier2.exe
+C:\Users\net\OneDrive\Documents\MES_ETUDES\3IIR_S6_EMSI\P.O.O\Mes_Projets\Atelier3\obj\Debug\Atelier2.pdb

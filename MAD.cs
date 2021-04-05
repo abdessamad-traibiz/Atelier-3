@@ -80,5 +80,14 @@ namespace Atelier2
             else
                 return false;
         }
+        public double Conversion(double Val)
+        {
+            return this.Valeur * Val;
+        }
+
+        public bool MoitieSolde(MAD somme)
+        {
+            return this.Valeur > (somme.Valeur * 2);
+        }
     }
 }

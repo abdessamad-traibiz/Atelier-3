@@ -38,6 +38,7 @@ namespace Atelier2
                 Console.WriteLine("\t13- Ajouter Opérations. ");
                 Console.WriteLine("\t14- Afficher Opérations. ");
                 Console.WriteLine("\t15- Afficher Liste Comptes. ");
+                Console.WriteLine("\t16- Ajouter Compte Courant. ");
                 Console.WriteLine("\t0- Quitter. \n\n");
                 do
                 {
@@ -250,7 +251,15 @@ namespace Atelier2
                             client1.AfficherListeComptes();
                             client2.AfficherListeComptes();
                         }break;
-
+                    case 15:
+                        {
+                            Console.WriteLine("\t\t**Ajouter Compte Courant** ");
+                            Console.WriteLine("\t\t--------------------");
+                            CompteCourant CptCourant = new CompteCourant(client1, MAD1, new MAD(20), new CarteBancaire("Visa"));
+                            CptCourant.Debiter(MAD2);
+                            CptCourant.AjouterInteret(12);
+                        }
+                        break;
                 }
             } while (CaseSwitch != 0);
 

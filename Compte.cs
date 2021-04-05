@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Atelier2
 {
-    class Compte
+    abstract class Compte
     {
         private readonly int NumCpt;
         private static int Cpt = 0;
@@ -113,6 +113,11 @@ namespace Atelier2
                 return;
             } 
             Console.WriteLine("\nAucune Opération à afficher !!");
+        }
+
+        public bool MoitieSolde(MAD somme)
+        {
+            return Solde.MoitieSolde(somme);
         }
     }
 }

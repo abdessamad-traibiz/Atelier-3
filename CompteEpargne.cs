@@ -31,5 +31,13 @@ namespace Atelier2
             base.Consulter();
             Console.WriteLine("Taux Interêt :" + this.TauxInteret);
         }
+        public override bool Debiter(MAD Somme)//la redéfinition de la méthode débiter
+        {
+            if (this.MoitieSolde(somme))
+            {
+                return base.Debiter(Somme);
+            }
+            return false;
+        }
     }
 }

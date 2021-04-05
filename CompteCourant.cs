@@ -9,14 +9,16 @@ namespace Atelier2
     class CompteCourant : Compte
     {
         private MAD Decouvert;
-        public CompteCourant(Client client,MAD solde, MAD decouvert) :base(client,solde)
+        private CarteBancaire cartebancaire; 
+        public CompteCourant(Client client,MAD solde, MAD decouvert,CarteBancaire carteban) :base(client,solde)
         {
             this.Decouvert = decouvert;
+            this.cartebancaire = carteban;
         }
 
         public override bool Debiter(MAD Somme)//la redéfinition de la méthode débiter
         {
-            if (this.ComparerDecouvert(Somme,Decouvert))
+            if (this.ComparerDecouvert(Somme,Decouvert) 
             {
                 return base.Debiter(Somme);
             }return false;
